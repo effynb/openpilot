@@ -338,6 +338,18 @@ class CarInterface(object):
       ret.longitudinalTuning.kiBP = [0., 35.]
       ret.longitudinalTuning.kiV = [0.18, 0.12]
 
+	  elif candidate == CAR.FIT:
+      stop_and_go = False
+      ret.mass = 1066. + std_cargo #EX model in meters
+      ret.wheelbase = 2.53
+      ret.centerToFront = ret.wheelbase * 0.41
+      ret.steerRatio = 13.06
+      ret.steerKpV, ret.steerKiV = [[0.8], [0.24]] #Taken from Energee's Fit 2018 LX Port
+      ret.longitudinalKpBP = [0., 5., 35.] #Taken from Energee's Fit 2018 LX Port
+      ret.longitudinalKpV = [1.2, 0.8, 0.5] #Taken from Energee's Fit 2018 LX Port
+      ret.longitudinalKiBP = [0., 35.] #Taken from Energee's Fit 2018 LX Port
+      ret.longitudinalKiV = [0.18, 0.12] #Taken from Energee's Fit 2018 LX Port
+	  
     else:
       raise ValueError("unsupported car %s" % candidate)
 
